@@ -3,6 +3,7 @@ package com.josephasante.zapposandroidchallenge;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -31,7 +32,7 @@ public class ProductDetailActivity extends ActionBarActivity {
     /* Product Details */
     private String asin = "";
     private String price = "";
-    private String origPrice = "";
+    private String originalPrice = "";
 
     private ProgressDialog progressDialog;
 
@@ -43,7 +44,6 @@ public class ProductDetailActivity extends ActionBarActivity {
     private TextView origPriceTextView;
     private TextView priceTextView;
     private WebView descriptionWebView;
-    private TextView colorTextView;
     private ImageView productImage;
 
     @Override
@@ -52,17 +52,7 @@ public class ProductDetailActivity extends ActionBarActivity {
         setContentView(R.layout.activity_product_detail);
 
         final Intent intent = getIntent();
-        final String action = intent.getAction();
-
-        if ("com.josephasante.zapposandroidchallenge.action.OPEN_VIEW".equals(action)) {
-            Log.i(getClass().getSimpleName(), "EXTRA: "+intent.getExtras().getString("myextra"));
-        }
-
-        // Get asin
-        //Intent intent = getIntent();
-        asin = intent.getStringExtra("asin");
-        price = intent.getStringExtra("price");
-        origPrice = intent.getStringExtra("originalPrice");
+        onNewIntent(intent);
 
         // Initialize text views
         nameTextView = (TextView) findViewById(R.id.productDetail_name);
@@ -72,7 +62,6 @@ public class ProductDetailActivity extends ActionBarActivity {
 
         priceTextView = (TextView) findViewById(R.id.productDetail_price);
         descriptionWebView = (WebView) findViewById(R.id.productDetail_description);
-        colorTextView = (TextView) findViewById(R.id.productDetail_color);
 
         productImage = (ImageView) findViewById(R.id.productDetail_image);
 
@@ -84,6 +73,26 @@ public class ProductDetailActivity extends ActionBarActivity {
         setUpView();
 
         getProductDetails();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        String action = intent.getAction();
+        Uri data = intent.getData();
+
+        if (Intent.ACTION_VIEW.equals(action) && data != null) {
+            // Get asin
+            asin = data.getQueryParameter("asin");
+            price = data.getQueryParameter("price");
+            originalPrice = data.getQueryParameter("originalPrice");
+
+            Log.d(getComponentName().getShortClassName(), data.toString());
+        } else {
+            // Get asin
+            asin = intent.getStringExtra("asin");
+            price = intent.getStringExtra("price");
+            originalPrice = intent.getStringExtra("originalPrice");
+        }
     }
 
     private void setUpView() {
@@ -113,6 +122,9 @@ public class ProductDetailActivity extends ActionBarActivity {
 
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Product Details");
+            shareIntent.putExtra("asin", asin);
+            shareIntent.putExtra("price", price);
+            shareIntent.putExtra("originalPrice", originalPrice);
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareIntent.toUri(Intent.URI_INTENT_SCHEME));
 
             mShareActionProvider.setShareIntent(shareIntent);
@@ -168,8 +180,8 @@ public class ProductDetailActivity extends ActionBarActivity {
                         }
 
                         priceTextView.setText(price);
-                        if (!origPrice.equals("null") && origPrice != null)
-                            origPriceTextView.setText(origPrice);
+                        if (!originalPrice.equals("null") && originalPrice != null)
+                            origPriceTextView.setText(originalPrice);
                     }
 
                     @Override
