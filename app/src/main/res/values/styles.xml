@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="actionBarStyle">@style/ActionBarTheme</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="@style/Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/titleBackground</item>
+    </style>
+
+</resources>

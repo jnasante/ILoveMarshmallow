@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Zappos Android Challenge</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="search_hint">search product</string>
+    <string name="main_search">Search!</string>
+
+    <string name="placeholder_productName">Product</string>
+    <string name="placeholder_productPrice">Price</string>
+    <string name="title_activity_product_detail">ProductDetailActivity</string>
+
+    <string name="noResultsMessage">No products found</string>
+</resources>

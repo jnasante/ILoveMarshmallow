@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/detailBackground"
+    tools:context="com.josephasante.zapposandroidchallenge.ProductDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="#1565C0"
+        android:gravity="bottom">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/productDetail_image"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetail_name"
+            android:layout_toRightOf="@+id/productDetail_image"
+            android:layout_above="@+id/productDetail_origPrice"
+
+            android:textSize="20dp"
+            android:textColor="#EDE7F6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetail_origPrice"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/productDetail_image"
+            android:layout_alignBottom="@+id/productDetail_image"
+            android:text=""
+            android:textSize="15dp"
+            android:textColor="#EDE7F6"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetail_price"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/productDetail_origPrice"
+            android:layout_alignBottom="@+id/productDetail_image"
+
+            android:textSize="15dp"
+            android:textColor="#EDE7F6"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/productDetail_color"
+                android:textSize="18dp"
+                android:text=""/>
+
+            <WebView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/productDetail_description"
+                android:background="#B3E5FC"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

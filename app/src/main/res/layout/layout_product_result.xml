@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingTop="5dp" android:paddingBottom="5dp">
+
+    <ImageView
+        android:id="@+id/searchResults_productIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchResults_name"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/searchResults_productIcon"
+        android:layout_alignTop="@+id/searchResults_productIcon"
+
+        android:text="@string/placeholder_productName"
+        android:textSize="15dp"
+        android:textColor="@color/darkText"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchResults_price"
+        android:layout_below="@+id/searchResults_name"
+        android:layout_alignLeft="@+id/searchResults_name"
+
+        android:text="$0.00"
+        android:textColor="@color/darkText"
+        android:textSize="12dp"/>
+
+</RelativeLayout>
