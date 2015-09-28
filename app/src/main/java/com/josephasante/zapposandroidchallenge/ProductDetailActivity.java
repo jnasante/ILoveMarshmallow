@@ -129,9 +129,8 @@ public class ProductDetailActivity extends ActionBarActivity {
 
             mShareActionProvider.setShareIntent(shareIntent);
 
-            Log.d("uggh", shareIntent.toUri(Intent.URI_INTENT_SCHEME));
+            Log.d(getComponentName().getShortClassName(), shareIntent.toUri(Intent.URI_INTENT_SCHEME));
         }
-
     }
 
     private void getProductDetails() {
